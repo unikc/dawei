@@ -3,7 +3,7 @@ import fs from "node:fs";
 const base = process.env.AUDIT_BASE_URL || "http://127.0.0.1:3000";
 const catalog = JSON.parse(fs.readFileSync("data/legacy-catalog.json", "utf8"));
 const categories = ["ductile-iron-gate-valves", "ductile-iron-butterfly-valves", "ductile-iron-check-valves", "air-valves", "strainers", "other-valves", "fittings", "pipes", "flanges"];
-const routes = ["/", "/products", "/industries", "/quality", "/about", "/contact", "/catalog", ...categories.map((s) => `/products/${s}`), ...catalog.map((p) => `/products/detail/${p.slug}`)];
+const routes = ["/", "/products", "/industries", "/quality", "/about", "/contact", "/design-system", "/catalog", ...categories.map((s) => `/products/${s}`), ...catalog.map((p) => `/products/detail/${p.slug}`)];
 const issues = [];
 const checkedAssets = new Set();
 

@@ -5,6 +5,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { products } from "@/data/site";
 import Image from "next/image";
+import { buttonVariants } from "@/components/ui/button";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -28,7 +29,7 @@ export function Header() {
               </div>
             </div>
             <Link href="/industries">Industries</Link><Link href="/quality">Quality</Link><Link href="/about">About</Link>
-            <Link href="/contact" className="bg-signal px-5 py-3 text-white transition hover:bg-orange-600">Request a Quote</Link>
+            <Link href="/contact" className={buttonVariants({variant:"signal",size:"sm"})}>Request a Quote</Link>
           </nav>
           <button className="lg:hidden" aria-label="Toggle navigation" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
         </div>

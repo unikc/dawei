@@ -2,10 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-* { box-sizing: border-box; }
+:root {
+  --background: 0 0% 100%;
+  --foreground: 215 39% 18%;
+  --card: 0 0% 100%;
+  --card-foreground: 215 39% 18%;
+  --primary: 208 92% 35%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 24% 95%;
+  --secondary-foreground: 209 75% 11%;
+  --muted: 210 24% 96%;
+  --muted-foreground: 215 16% 42%;
+  --accent: 207 65% 94%;
+  --accent-foreground: 208 92% 28%;
+  --border: 214 24% 86%;
+  --input: 214 24% 78%;
+  --ring: 208 92% 35%;
+  --signal: 27 86% 53%;
+  --signal-foreground: 0 0% 100%;
+  --navy: 209 75% 11%;
+  --steel: 209 60% 23%;
+  --valve: 208 92% 35%;
+  --mist: 204 24% 96%;
+  --radius: 2px;
+}
+
+* { box-sizing: border-box; border-color: hsl(var(--border)); }
 html { scroll-behavior: smooth; }
-body { color: #1e293b; background: #fff; }
+body { color: hsl(var(--foreground)); background: hsl(var(--background)); }
 a { transition: color .2s, background-color .2s, border-color .2s; }
+button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+::selection { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
 .eyebrow { @apply mb-3 text-xs font-bold uppercase tracking-[.25em] text-valve; }
 .section-title { @apply text-3xl font-black leading-tight text-navy md:text-4xl; }
 .grid-lines { background-image: linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size: 36px 36px; }
