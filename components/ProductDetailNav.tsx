@@ -50,10 +50,6 @@ export function ProductDetailNav({ products, currentSlug }: { products: ProductN
 
   return <aside className="lg:sticky lg:top-24 lg:self-start">
     <div className="hidden max-h-[calc(100vh-7rem)] overflow-hidden border border-border bg-background lg:flex lg:flex-col">
-      <div className="border-b border-border bg-navy px-4 py-3 text-white">
-        <p className="text-[10px] font-bold uppercase tracking-wider text-blue-200">{current?.category}</p>
-        <h2 className="mt-1 line-clamp-2 text-xs font-black leading-4">{current?.title}</h2>
-      </div>
       <div className="flex items-center justify-between border-b border-border px-4 py-3"><h2 className="text-xs font-black uppercase tracking-wider text-navy">Product Directory</h2><span className="text-[11px] text-muted-foreground">{products.length}</span></div>
       <div className="min-h-0 flex-1 overflow-y-auto px-4">{navigation}</div>
       <div className="grid grid-cols-2 gap-2 border-t border-border p-3">
