@@ -33,7 +33,7 @@ export default function DesignSystemPage() {
         ["Industrial Clarity", "Strong hierarchy, visible borders, and restrained decoration."],
         ["Buyer Confidence", "Standards, materials, applications, and RFQ paths remain explicit."],
         ["Open Code", "Components live in the repository and can be adapted without wrappers."],
-      ].map(([title, description],i)=><Card key={title}><CardHeader><span className="text-3xl font-black text-border">0{i+1}</span><CardTitle className="mt-5">{title}</CardTitle><CardDescription>{description}</CardDescription></CardHeader></Card>)}</div>
+      ].map(([title, description],i)=><Card key={title}><CardHeader className="border-b-0"><span className="text-3xl font-black text-border">0{i+1}</span><CardTitle className="mt-5">{title}</CardTitle><CardDescription>{description}</CardDescription></CardHeader></Card>)}</div>
     </Section>
 
     <Section eyebrow="Tokens" title="Industrial color system">
