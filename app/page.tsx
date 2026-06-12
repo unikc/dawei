@@ -15,9 +15,9 @@ export default function Home() {
       <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/15" />
       <div className="grid-lines absolute inset-0" />
       <div className="relative mx-auto flex min-h-[620px] max-w-7xl items-center px-5 py-20">
-        <div className="max-w-4xl"><Badge variant="signal">Ductile Iron Valve Specialist</Badge>
+        <div className="max-w-4xl"><Badge variant="signal">Valve &amp; Piping Supply · Ductile Iron Focus</Badge>
           <h1 className="text-5xl font-black leading-[1.05] md:text-7xl">Metal Seated Gate Valves<br/><span className="text-blue-300"> & Double Eccentric Butterfly Valves</span></h1>
-          <p className="mt-6 max-w-3xl border-l-4 border-signal pl-5 text-lg leading-8 text-white/80 md:text-xl">Ductile iron valve solutions for waterworks, municipal infrastructure, and international project supply.</p>
+          <p className="mt-6 max-w-3xl border-l-4 border-signal pl-5 text-lg leading-8 text-white/80 md:text-xl">Focused on ductile iron valves for waterworks and infrastructure, with broader valve and piping supply capabilities for international projects.</p>
           <div className="mt-9 flex flex-wrap gap-3"><Link href="/products" className={buttonVariants({variant:"signal",size:"lg"})}>Explore Products</Link><Link href="/contact" className={buttonVariants({variant:"outline",size:"lg",className:"border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white"})}>Request a Quote</Link></div>
         </div>
       </div>
