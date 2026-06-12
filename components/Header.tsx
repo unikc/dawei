@@ -11,14 +11,11 @@ export function Header() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className="bg-navy px-5 py-2 text-xs text-white/70">
-        <div className="mx-auto max-w-7xl text-center font-medium tracking-wide">International valve &amp; piping supply since the early 1990s</div>
-      </div>
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5">
           <Link href="/" className="flex items-center gap-3">
             <span className="relative h-14 w-20 overflow-hidden"><Image src="/images/original/dawei-logo.jpg" alt="Dawei logo" fill sizes="80px" className="object-cover object-center"/></span>
-            <span><b className="block text-lg tracking-tight text-navy">DALIAN DAWEI</b><small className="block text-[9px] font-bold uppercase tracking-[.18em] text-muted-foreground">International Co., Ltd.</small></span>
+            <span><b className="block text-lg tracking-tight text-navy">DALIAN DAWEI</b><small className="block text-[9px] font-bold uppercase tracking-[.16em] text-muted-foreground">International valve &amp; piping supply since the early 1990s</small></span>
           </Link>
           <nav className="hidden items-center gap-7 text-sm font-bold text-navy lg:flex">
             <Link href="/">Home</Link>
