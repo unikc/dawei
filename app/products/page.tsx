@@ -1,11 +1,18 @@
-import Link from "next/link";
-import { products } from "@/data/site";
-import { ProductVisual } from "@/components/ProductVisual";
-import { ArrowRight } from "lucide-react";
-import { CTA } from "@/components/CTA";
 import catalog from "@/data/legacy-catalog.json";
 import { CatalogExplorer } from "@/components/CatalogExplorer";
-import { PageHero } from "@/components/PageHero";
-import { Card, CardContent } from "@/components/ui/card";
+
 export const metadata = { title: "Products" };
-export default function Products(){return <><PageHero eyebrow="Product center" title="Ductile Iron Valves for Waterworks" description="Our primary focus is metal seated gate valves and flanged double eccentric butterfly valves. A broader historical valve and piping range remains available for project requirements."><div className="flex flex-wrap gap-8 text-sm"><p><b className="text-2xl text-signal">Metal Seated Gate Valves</b><br/>Core isolation valve range</p><p><b className="text-2xl text-signal">Double Eccentric Butterfly Valves</b><br/>Core flanged flow-control range</p></div></PageHero><section className="px-5 py-16"><div className="mx-auto max-w-7xl"><div className="mb-10"><p className="eyebrow">Product categories</p><h2 className="section-title">Core products first, broader capabilities available.</h2></div><div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{products.map((p,i)=><Card key={p.slug} className={`group overflow-hidden hover:border-primary hover:shadow-lg ${i<2?"ring-2 ring-primary/20":""}`}><Link href={`/products/${p.slug}`}><ProductVisual type={p.type} image={p.image} name={p.name} compact/><CardContent className="p-6"><h2 className="text-xl font-black text-navy group-hover:text-primary">{p.name}</h2><p className="mt-3 text-sm leading-6 text-muted-foreground">{p.short}</p><span className="mt-5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary">Explore category <ArrowRight size={14}/></span></CardContent></Link></Card>)}</div></div></section><section className="border-t bg-muted px-5 py-16"><div className="mx-auto max-w-7xl"><div className="mb-10"><p className="eyebrow">Complete archive range</p><h2 className="section-title">Detailed product selection.</h2><p className="mt-4 max-w-3xl leading-7 text-muted-foreground">Core ductile iron products appear first. Search the complete historical range by product type, material, standard, or pressure class for broader project requirements.</p></div><CatalogExplorer products={catalog}/></div></section><CTA/></>}
+
+export default function Products(){
+  return <>
+    <section className="border-b border-border bg-muted px-5 py-8">
+      <div className="mx-auto max-w-7xl">
+        <h1 className="text-3xl font-black text-navy md:text-4xl">Products</h1>
+        <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">Search the complete Dawei product range by product type, material, standard, or pressure class.</p>
+      </div>
+    </section>
+    <section className="px-5 py-8">
+      <div className="mx-auto max-w-7xl"><CatalogExplorer products={catalog}/></div>
+    </section>
+  </>;
+}
