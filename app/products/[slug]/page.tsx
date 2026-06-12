@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ChevronRight } from "lucide-react";
 import { products } from "@/data/site";
 import { ProductVisual } from "@/components/ProductVisual";
 import catalog from "@/data/legacy-catalog.json";
@@ -26,7 +26,7 @@ export default function ProductPage({params}:{params:{slug:string}}) {
   return <>
     <section className="bg-muted px-5 py-8">
       <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
-        <div><h1 className="text-3xl font-black text-navy md:text-4xl">{p.name}</h1><p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">{p.description}</p></div>
+        <div><nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground"><Link className="text-primary hover:text-navy" href="/products">Products</Link><ChevronRight size={14}/><span>{p.name}</span></nav><h1 className="text-3xl font-black text-navy md:text-4xl">{p.name}</h1><p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">{p.description}</p></div>
         <ProductVisual type={p.type} image={p.image} name={p.name} compact label={false}/>
       </div>
     </section>
