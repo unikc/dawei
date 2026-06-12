@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: { default: "Dawei Valve | Industrial Valve Solutions", template: "%s | Dawei Valve" },
-  description: "Specialized in ductile iron valves for waterworks and infrastructure projects, with broader valve and piping supply capabilities.",
+  description: "Ductile iron metal seated gate valves and flanged double eccentric butterfly valves for waterworks and infrastructure projects.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

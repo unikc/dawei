@@ -22,6 +22,9 @@ export function CatalogExplorer({ products }: { products: CatalogProduct[] }) {
     const matchesCategory = category === "All" || p.category === category;
     const haystack = `${p.title} ${p.summary}`.toLowerCase();
     return matchesCategory && haystack.includes(query.toLowerCase());
+  }).toSorted((a,b) => {
+    const priority = (slug:string) => /valves-(dincast-\d+|gatens-(01|02)|butterfly-(01|02|03))$/.test(slug) ? 0 : 1;
+    return priority(a.slug)-priority(b.slug) || a.title.localeCompare(b.title);
   }), [products, query, category]);
 
   return <div>

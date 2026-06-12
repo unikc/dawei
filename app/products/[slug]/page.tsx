@@ -8,8 +8,8 @@ import catalog from "@/data/legacy-catalog.json";
 import Image from "next/image";
 export function generateStaticParams(){return products.map(p=>({slug:p.slug}))}
 export default function ProductPage({params}:{params:{slug:string}}){const p=products.find(x=>x.slug===params.slug);if(!p)notFound();const matchers:Record<string,(slug:string)=>boolean>= {
-  "ductile-iron-gate-valves":slug=>/valves-(dincast-\d+|gatens-(01|02)|castiron-rsg)$/.test(slug),
-  "ductile-iron-butterfly-valves":slug=>/valves-butterfly-(01|02|03|wt|wt1)$/.test(slug),
+  "ductile-iron-gate-valves":slug=>/valves-(dincast-\d+|gatens-(01|02))$/.test(slug),
+  "ductile-iron-butterfly-valves":slug=>/valves-butterfly-(01|02|03)$/.test(slug),
   "ductile-iron-check-valves":slug=>/valves-(gatens-03|butterfly-wc)$/.test(slug),
   "strainers":slug=>/strainer|-ys$/.test(slug),
   "other-valves":slug=>slug.startsWith("valves-")&&!/valves-(dincast|gatens|castiron-rsg|butterfly-(01|02|03|wt|wt1|wc))/.test(slug),
