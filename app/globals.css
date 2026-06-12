@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { color: #1e293b; background: #fff; }
+a { transition: color .2s, background-color .2s, border-color .2s; }
+.eyebrow { @apply mb-3 text-xs font-bold uppercase tracking-[.25em] text-valve; }
+.section-title { @apply text-3xl font-black leading-tight text-navy md:text-4xl; }
+.grid-lines { background-image: linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size: 36px 36px; }
