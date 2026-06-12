@@ -3,11 +3,8 @@ import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 import { products } from "@/data/site";
 import { ProductVisual } from "@/components/ProductVisual";
-import { CTA } from "@/components/CTA";
 import catalog from "@/data/legacy-catalog.json";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 export function generateStaticParams(){return products.map(p=>({slug:p.slug}))}
 
@@ -29,8 +26,8 @@ export default function ProductPage({params}:{params:{slug:string}}) {
   return <>
     <section className="bg-muted px-5 py-8">
       <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
-        <div><Badge>Dawei product range</Badge><h1 className="mt-3 text-3xl font-black text-navy md:text-4xl">{p.name}</h1><p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">{p.description}</p><Link href="/contact" className={buttonVariants({variant:"signal",size:"sm",className:"mt-5"})}>Request a Quote</Link></div>
-        <ProductVisual type={p.type} image={p.image} name={p.name} compact/>
+        <div><h1 className="text-3xl font-black text-navy md:text-4xl">{p.name}</h1><p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">{p.description}</p></div>
+        <ProductVisual type={p.type} image={p.image} name={p.name} compact label={false}/>
       </div>
     </section>
 
@@ -44,6 +41,5 @@ export default function ProductPage({params}:{params:{slug:string}}) {
         <Card><CardContent className="p-5"><h2 className="text-xl font-black text-navy">Applications</h2><div className="mt-4 space-y-2">{p.applications.map(x=><p className="flex gap-3 border-b pb-2 text-sm last:border-b-0" key={x}><CheckCircle2 size={17} className="text-signal"/>{x}</p>)}</div></CardContent></Card>
       </div>
     </section>
-    <CTA/>
   </>;
 }
