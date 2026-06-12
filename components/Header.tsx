@@ -12,7 +12,7 @@ export function Header() {
   return (
     <>
       <div className="bg-navy px-5 py-2 text-xs text-white/70">
-        <div className="mx-auto flex max-w-7xl justify-between gap-4"><span>International valve & piping supply since the early 1990s</span><span className="flex flex-wrap justify-end gap-x-4"><a href="mailto:guogangliu@vip.sina.com">guogangliu@vip.sina.com</a><a href="mailto:guogangliu@sina.com">guogangliu@sina.com</a></span></div>
+        <div className="mx-auto max-w-7xl text-center font-medium tracking-wide">International valve &amp; piping supply since the early 1990s</div>
       </div>
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5">
