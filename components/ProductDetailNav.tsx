@@ -19,9 +19,17 @@ export function ProductDetailNav({ products, currentSlug }: { products: ProductN
     (result[product.category] ??= []).push(product);
     return result;
   }, {});
+  const categoryPriority = ["Gate Valves", "Butterfly Valves", "Check Valves", "Globe Valves", "Ball Valves", "Plug Valves", "Strainers", "Other Valves", "Fittings", "Pipes", "Flanges", "Castings & Forgings"];
+  const groupEntries = Object.entries(groups).sort(([categoryA], [categoryB]) => {
+    if (categoryA === current?.category) return -1;
+    if (categoryB === current?.category) return 1;
+    const indexA = categoryPriority.indexOf(categoryA);
+    const indexB = categoryPriority.indexOf(categoryB);
+    return (indexA < 0 ? categoryPriority.length : indexA) - (indexB < 0 ? categoryPriority.length : indexB);
+  });
 
   const navigation = <div className="divide-y divide-border border-t border-border">
-    {Object.entries(groups).map(([category, items]) => {
+    {groupEntries.map(([category, items]) => {
       const activeCategory = items.some((item) => item.slug === currentSlug);
       return <details className="group" key={category} open={activeCategory}>
         <summary className="flex cursor-pointer list-none items-center justify-between gap-3 py-2.5 text-[11px] font-black uppercase tracking-wider text-navy">
@@ -39,18 +47,29 @@ export function ProductDetailNav({ products, currentSlug }: { products: ProductN
     })}
   </div>;
 
-  return <aside>
-    <div className="hidden lg:sticky lg:top-28 lg:block">
-      <div className="mb-3 flex items-center justify-between"><h2 className="text-xs font-black uppercase tracking-wider text-navy">Product Directory</h2><span className="text-[11px] text-muted-foreground">{products.length} products</span></div>
-      <div className="max-h-[calc(100vh-10rem)] overflow-y-auto pr-2">{navigation}</div>
+  return <aside className="lg:sticky lg:top-24 lg:self-start">
+    <div className="hidden max-h-[calc(100vh-7rem)] overflow-hidden border border-border bg-background lg:flex lg:flex-col">
+      <div className="border-b border-border bg-muted p-4">
+        <Badge variant="signal">Current Range</Badge>
+        <h2 className="mt-3 text-sm font-black text-navy">{current?.category}</h2>
+        <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-muted-foreground">{current?.title}</p>
+      </div>
+      <div className="flex items-center justify-between border-b border-border px-4 py-3"><h2 className="text-xs font-black uppercase tracking-wider text-navy">Product Directory</h2><span className="text-[11px] text-muted-foreground">{products.length}</span></div>
+      <div className="min-h-0 flex-1 overflow-y-auto px-4">{navigation}</div>
+      <div className="grid grid-cols-2 gap-2 border-t border-border p-3">
+        {previous ? <Link aria-label={`Previous product: ${previous.title}`} className="flex min-w-0 items-center gap-1.5 border border-border p-2 text-[11px] font-bold text-navy hover:border-primary hover:text-primary" href={`/products/detail/${previous.slug}`}><ChevronLeft size={15} className="shrink-0"/><span className="truncate">Previous</span></Link> : <span/>}
+        {next ? <Link aria-label={`Next product: ${next.title}`} className="flex min-w-0 items-center justify-end gap-1.5 border border-border p-2 text-right text-[11px] font-bold text-navy hover:border-primary hover:text-primary" href={`/products/detail/${next.slug}`}><span className="truncate">Next</span><ChevronRight size={15} className="shrink-0"/></Link> : <span/>}
+      </div>
     </div>
-    <details className="border border-border bg-background lg:hidden">
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3 font-bold text-navy"><span className="flex items-center gap-2"><List size={17} className="text-primary"/> Browse Products</span><Badge>{current?.category}</Badge></summary>
-      <div className="max-h-[60vh] overflow-y-auto px-3 pb-3">{navigation}</div>
-    </details>
-    <div className="mt-3 grid grid-cols-2 gap-2">
-      {previous ? <Link className="flex min-w-0 items-center gap-1.5 border border-border p-2.5 text-[11px] font-bold text-navy hover:border-primary hover:text-primary" href={`/products/detail/${previous.slug}`}><ChevronLeft size={15} className="shrink-0"/><span className="truncate">{previous.title}</span></Link> : <span/>}
-      {next ? <Link className="flex min-w-0 items-center justify-end gap-1.5 border border-border p-2.5 text-right text-[11px] font-bold text-navy hover:border-primary hover:text-primary" href={`/products/detail/${next.slug}`}><span className="truncate">{next.title}</span><ChevronRight size={15} className="shrink-0"/></Link> : <span/>}
+    <div className="lg:hidden">
+      <details className="border border-border bg-background">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3 font-bold text-navy"><span className="flex items-center gap-2"><List size={17} className="text-primary"/> Browse Products</span><Badge>{current?.category}</Badge></summary>
+        <div className="max-h-[60vh] overflow-y-auto px-3 pb-3">{navigation}</div>
+      </details>
+      <div className="mt-3 grid grid-cols-2 gap-2">
+        {previous ? <Link className="flex min-w-0 items-center gap-1.5 border border-border p-2.5 text-[11px] font-bold text-navy hover:border-primary hover:text-primary" href={`/products/detail/${previous.slug}`}><ChevronLeft size={15} className="shrink-0"/><span className="truncate">{previous.title}</span></Link> : <span/>}
+        {next ? <Link className="flex min-w-0 items-center justify-end gap-1.5 border border-border p-2.5 text-right text-[11px] font-bold text-navy hover:border-primary hover:text-primary" href={`/products/detail/${next.slug}`}><span className="truncate">{next.title}</span><ChevronRight size={15} className="shrink-0"/></Link> : <span/>}
+      </div>
     </div>
   </aside>;
 }
