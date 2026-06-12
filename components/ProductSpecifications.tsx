@@ -33,16 +33,16 @@ function groupTitle(group: RowGroup, index: number) {
 
 export function ProductSpecifications({ rows }: Props) {
   const groups = splitGroups(rows);
-  return <div className="space-y-10">
+  return <div className="space-y-6">
     {groups.map((group, groupIndex) => {
       const title = groupTitle(group, groupIndex);
       const normalized = group.rows.map((row) => [...row, ...Array(group.columns - row.length).fill("")]);
       const hasHeader = normalized[0]?.some((cell) => /^(no\.?|dn|size|nominal|nps|class|name|material|part|item|pressure|l|d|d1)$/i.test(cell.trim()));
       return <section key={`${title}-${groupIndex}`}>
-        <h3 className="mb-4 text-lg font-black text-navy">{title}</h3>
+        <h3 className="mb-3 text-base font-black text-navy">{title}</h3>
         {group.columns <= 3 && !hasHeader
-          ? <dl className="grid overflow-hidden border sm:grid-cols-2">{normalized.map((row, i) => <div className="grid grid-cols-[minmax(140px,1fr)_1fr] border-b bg-card last:border-b-0 sm:odd:border-r" key={i}><dt className="bg-muted px-4 py-3 text-xs font-bold text-navy">{row.slice(0, -1).filter(Boolean).join(" — ")}</dt><dd className="px-4 py-3 text-xs text-muted-foreground">{row.at(-1)}</dd></div>)}</dl>
-          : <div className="overflow-x-auto border"><table className="w-full min-w-max table-fixed text-xs"><tbody>{normalized.map((row, i) => <tr className={i % 2 ? "bg-muted" : "bg-card"} key={i}>{row.map((cell, j) => <td style={{ minWidth: group.columns > 7 ? 82 : 130 }} className={`${hasHeader && i === 0 ? "bg-primary font-bold text-primary-foreground" : "text-muted-foreground"} border-r px-3 py-2.5 last:border-r-0`} key={j}>{cell || "—"}</td>)}</tr>)}</tbody></table></div>}
+          ? <dl className="grid overflow-hidden border sm:grid-cols-2">{normalized.map((row, i) => <div className="grid grid-cols-[minmax(140px,1fr)_1fr] border-b bg-card last:border-b-0 sm:odd:border-r" key={i}><dt className="bg-muted px-3 py-2 text-xs font-bold text-navy">{row.slice(0, -1).filter(Boolean).join(" — ")}</dt><dd className="px-3 py-2 text-xs text-muted-foreground">{row.at(-1)}</dd></div>)}</dl>
+          : <div className="overflow-x-auto border"><table className="w-full min-w-max table-fixed text-xs"><tbody>{normalized.map((row, i) => <tr className={i % 2 ? "bg-muted" : "bg-card"} key={i}>{row.map((cell, j) => <td style={{ minWidth: group.columns > 7 ? 82 : 130 }} className={`${hasHeader && i === 0 ? "bg-primary font-bold text-primary-foreground" : "text-muted-foreground"} border-r px-3 py-2 last:border-r-0`} key={j}>{cell || "—"}</td>)}</tr>)}</tbody></table></div>}
       </section>;
     })}
   </div>;
