@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowRight, BadgeCheck, Boxes, CheckCircle2, Factory, Globe2, ShieldCheck } from "lucide-react";
 import { products, industries } from "@/data/site";
 import { ProductVisual } from "@/components/ProductVisual";
-import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -14,9 +13,10 @@ export default function Home() {
       <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/15" />
       <div className="grid-lines absolute inset-0" />
       <div className="relative mx-auto flex min-h-[620px] max-w-7xl items-center px-5 py-20">
-        <div className="max-w-4xl"><Badge variant="signal">Valve &amp; Piping Supply · Ductile Iron Focus</Badge>
-          <h1 className="text-5xl font-black leading-[1.05] md:text-7xl">Metal Seated Gate Valves<br/><span className="text-blue-300"> & Double Eccentric Butterfly Valves</span></h1>
-          <p className="mt-6 max-w-3xl border-l-4 border-signal pl-5 text-lg leading-8 text-white/80 md:text-xl">Focused on ductile iron valves for waterworks and infrastructure, with broader valve and piping supply capabilities for international projects.</p>
+        <div className="max-w-4xl">
+          <p className="mb-5 text-xs font-bold uppercase tracking-[.24em] text-blue-200">International Valve &amp; Piping Supply</p>
+          <h1 className="text-5xl font-black leading-[1.05] md:text-7xl">Reliable Valve &amp; Piping Solutions<br/><span className="text-blue-300">for Global Infrastructure Projects</span></h1>
+          <p className="mt-6 max-w-3xl border-l-4 border-signal pl-5 text-lg leading-8 text-white/80 md:text-xl">Supplying ductile iron valves, butterfly valves, gate valves, piping systems and related products for waterworks, industrial, and infrastructure projects worldwide.</p>
           <div className="mt-9 flex flex-wrap gap-3"><Link href="/products" className={buttonVariants({variant:"signal",size:"lg"})}>Explore Products</Link></div>
         </div>
       </div>
