@@ -9,6 +9,7 @@ import {
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Card, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { ProductImageLightbox } from "@/components/ProductImageLightbox";
 
 export function DoubleEccentricTechnicalData() {
   return <section className="border-t border-border bg-background px-5 py-10 md:px-8">
@@ -16,6 +17,15 @@ export function DoubleEccentricTechnicalData() {
       <p className="eyebrow">Core technical data</p>
       <h2 className="section-title">Flanged Double Eccentric Butterfly Valve</h2>
       <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">Ductile iron, resilient seated configuration for water service. Available in PN10, PN16, and PN25 across DN150-DN2000.</p>
+
+      <div className="mt-6">
+        <h3 className="text-xl font-black text-navy">High-resolution Technical Sheets</h3>
+        <p className="mt-2 text-sm text-muted-foreground">Click either sheet to inspect the drawing, materials, and dimensional data at high resolution.</p>
+        <div className="mt-3 grid gap-4 md:grid-cols-2">
+          <ProductImageLightbox className="h-72 md:h-96" src="/images/technical/double-eccentric-overview.jpg" alt="Double eccentric butterfly valve technical overview"/>
+          <ProductImageLightbox className="h-72 md:h-96" src="/images/technical/double-eccentric-dimensions.jpg" alt="Double eccentric butterfly valve dimensions and weights"/>
+        </div>
+      </div>
 
       <div className="mt-6 grid gap-5 lg:grid-cols-2">
         <Card><CardContent className="p-5">

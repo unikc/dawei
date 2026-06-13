@@ -8,10 +8,12 @@ export function ProductImageLightbox({
   src,
   alt,
   featured = false,
+  className = "",
 }: {
   src: string;
   alt: string;
   featured?: boolean;
+  className?: string;
 }) {
   const [open, setOpen] = useState(false);
   const [fitScreen, setFitScreen] = useState(false);
@@ -42,7 +44,7 @@ export function ProductImageLightbox({
       <button
         type="button"
         aria-label={`Enlarge ${alt}`}
-        className={`group relative overflow-hidden border border-border bg-background text-left hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${featured ? "col-span-2 h-56" : "h-36"}`}
+        className={`group relative overflow-hidden border border-border bg-background text-left hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${featured ? "col-span-2 h-56" : "h-36"} ${className}`}
         onClick={() => setOpen(true)}
       >
         <Image
