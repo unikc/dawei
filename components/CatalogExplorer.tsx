@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -40,7 +39,7 @@ export function CatalogExplorer({ products }: { products: CatalogProduct[] }) {
     <p className="mb-4 text-sm text-muted-foreground"><b className="text-navy">{filtered.length}</b> products match your selection</p>
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{filtered.map(p=><Card key={p.slug} className="group overflow-hidden hover:border-primary hover:shadow-lg"><Link href={`/products/detail/${p.slug}`}>
       <div className="relative h-36 bg-gradient-to-br from-white to-muted">{p.images[0]?<Image src={p.images[0]} alt={p.title} fill unoptimized className="object-contain p-4"/>:<div className="grid h-full place-items-center text-xs font-bold uppercase tracking-widest text-muted-foreground">Product information</div>}</div>
-      <CardContent className="p-4"><Badge variant="outline">{p.category}</Badge><h2 className="mt-2 text-base font-black leading-5 text-navy group-hover:text-primary">{p.title}</h2><p className="mt-2 line-clamp-2 text-xs leading-5 text-muted-foreground">{p.summary || "Contact Dawei for product specifications and availability."}</p><p className="mt-3 text-[10px] font-bold uppercase tracking-wider text-primary">View specifications →</p></CardContent>
+      <CardContent className="p-4"><h2 className="text-base font-black leading-5 text-navy group-hover:text-primary">{p.title}</h2><p className="mt-2 line-clamp-2 text-xs leading-5 text-muted-foreground">{p.summary || "Contact Dawei for product specifications and availability."}</p><p className="mt-3 text-[10px] font-bold uppercase tracking-wider text-primary">View specifications →</p></CardContent>
     </Link></Card>)}</div>
   </div>;
 }
