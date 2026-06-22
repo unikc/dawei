@@ -9,10 +9,12 @@ import { Card, CardContent } from "@/components/ui/card";
 export default function Home() {
   return <>
     <section className="relative min-h-[620px] overflow-hidden bg-navy text-white">
-      <Image src="/images/hero/dawei-blue-valves-workshop.jpg" alt="Blue ductile iron valves in a workshop" fill priority sizes="100vw" className="object-cover object-[64%_48%] opacity-90 brightness-110 contrast-110 saturate-125" />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/68 to-navy/18" />
-      <div className="absolute inset-y-0 left-0 w-[60%] bg-navy/40" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_42%,transparent_0,transparent_28%,rgba(5,22,39,.32)_72%)]" />
+      <div className="absolute inset-0 md:left-auto md:w-[54%]">
+        <Image src="/images/hero/dawei-blue-valves-workshop.jpg" alt="Blue ductile iron valves in a workshop" fill priority sizes="(min-width: 768px) 54vw, 100vw" className="object-cover object-center opacity-95 brightness-110 contrast-110 saturate-125" />
+      </div>
+      <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, #06192c 0%, #06192c 38%, rgba(6, 25, 44, 0.94) 47%, rgba(6, 25, 44, 0.62) 58%, rgba(6, 25, 44, 0.18) 72%, rgba(6, 25, 44, 0.08) 100%)" }} />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, transparent 0%, transparent 48%, rgba(6, 25, 44, 0.18) 62%, rgba(6, 25, 44, 0.34) 100%)" }} />
+      <div className="absolute inset-y-0 right-0 w-[54%] bg-[radial-gradient(circle_at_56%_42%,transparent_0,transparent_36%,rgba(5,22,39,.30)_78%)]" />
       <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-navy/70 to-transparent" />
       <div className="grid-lines absolute inset-0" />
       <div className="relative mx-auto flex min-h-[620px] max-w-7xl items-center px-5 py-20">
