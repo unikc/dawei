@@ -9,8 +9,11 @@ import { Card, CardContent } from "@/components/ui/card";
 export default function Home() {
   return <>
     <section className="relative min-h-[620px] overflow-hidden bg-navy text-white">
-      <Image src="/images/valve-hero.png" alt="Ductile iron valves in a waterworks facility" fill priority sizes="100vw" className="object-cover object-center opacity-55" />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/15" />
+      <Image src="/images/hero/dawei-blue-valves-workshop.jpg" alt="Blue ductile iron valves in a workshop" fill priority sizes="100vw" className="object-cover object-[64%_48%] opacity-90 brightness-110 contrast-110 saturate-125" />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/68 to-navy/18" />
+      <div className="absolute inset-y-0 left-0 w-[60%] bg-navy/40" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_42%,transparent_0,transparent_28%,rgba(5,22,39,.32)_72%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-navy/70 to-transparent" />
       <div className="grid-lines absolute inset-0" />
       <div className="relative mx-auto flex min-h-[620px] max-w-7xl items-center px-5 py-20">
         <div className="max-w-4xl">

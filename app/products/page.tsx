@@ -1,9 +1,22 @@
 import catalog from "@/data/legacy-catalog.json";
 import { CatalogExplorer } from "@/components/CatalogExplorer";
+import { sinoPriorityProducts } from "@/data/sino-priority";
 
 export const metadata = { title: "Products" };
 
 export default function Products(){
+  const supportingLegacyCatalog=catalog.filter((product)=>!/\b(gate|butterfly|check|air release|air valve)\b/i.test(product.title));
+  const completeCatalog=[
+    ...sinoPriorityProducts.map((product)=>({
+      slug:product.slug,
+      category:product.navigationCategory,
+      title:`${product.title} · ${product.range}`,
+      images:product.images,
+      summary:product.summary,
+      sourceFiles:[product.sourcePage],
+    })),
+    ...supportingLegacyCatalog,
+  ];
   return <>
     <section className="border-b border-border bg-muted px-5 py-8">
       <div className="mx-auto max-w-7xl">
@@ -12,7 +25,7 @@ export default function Products(){
       </div>
     </section>
     <section className="px-5 py-8">
-      <div className="mx-auto max-w-7xl"><CatalogExplorer products={catalog}/></div>
+      <div className="mx-auto max-w-7xl"><CatalogExplorer products={completeCatalog}/></div>
     </section>
   </>;
 }

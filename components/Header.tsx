@@ -9,6 +9,7 @@ import { buttonVariants } from "@/components/ui/button";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
@@ -20,9 +21,9 @@ export function Header() {
           <nav className="hidden items-center gap-7 text-sm font-bold text-navy lg:flex">
             <Link href="/">Home</Link>
             <div className="group relative py-8"><Link className="flex items-center gap-1" href="/products">Products <ChevronDown size={14}/></Link>
-              <div className="invisible absolute left-1/2 top-[78px] w-[560px] -translate-x-1/2 border-t-4 border-signal bg-background p-6 opacity-0 shadow-2xl transition group-hover:visible group-hover:opacity-100">
-                <p className="mb-4 text-xs uppercase tracking-widest text-valve">Product categories</p>
-                <div className="grid grid-cols-2 gap-x-8 gap-y-3">{products.map(p => <Link className="border-b border-border pb-2 hover:text-primary" key={p.slug} href={`/products/${p.slug}`}>{p.name}</Link>)}</div>
+              <div className="invisible absolute left-1/2 top-[78px] w-[360px] -translate-x-1/2 border-t-4 border-signal bg-background p-5 opacity-0 shadow-2xl transition group-hover:visible group-hover:opacity-100">
+                <p className="mb-3 text-xs uppercase tracking-widest text-valve">Product categories</p>
+                <div className="divide-y divide-border">{products.map(p => <Link className="flex items-center justify-between gap-4 py-3 text-[15px] hover:text-primary" key={p.slug} href={`/products/${p.slug}`}><span>{p.name}</span><span className="text-xs text-muted-foreground">→</span></Link>)}</div>
               </div>
             </div>
             <Link href="/industries">Industries</Link><Link href="/quality">Quality</Link><Link href="/about">About</Link>
@@ -30,7 +31,12 @@ export function Header() {
           </nav>
           <button className="lg:hidden" aria-label="Toggle navigation" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
         </div>
-        {open && <div className="border-t border-border bg-background px-5 py-5 lg:hidden">{["Home","Products","Industries","Quality","About","Contact"].map(x => <Link onClick={() => setOpen(false)} className="block border-b border-border py-3 font-bold text-navy" href={x === "Home" ? "/" : `/${x.toLowerCase()}`} key={x}>{x}</Link>)}</div>}
+        {open && <div className="border-t border-border bg-background px-5 py-5 lg:hidden">
+          <Link onClick={() => setOpen(false)} className="block border-b border-border py-3 font-bold text-navy" href="/">Home</Link>
+          <button className="flex w-full items-center justify-between border-b border-border py-3 text-left font-bold text-navy" onClick={() => setMobileProductsOpen(!mobileProductsOpen)} type="button">Products <ChevronDown size={16} className={mobileProductsOpen ? "rotate-180" : ""}/></button>
+          {mobileProductsOpen && <div className="border-b border-border py-2 pl-4">{products.map(p => <Link onClick={() => setOpen(false)} className="block py-2 text-sm font-bold text-muted-foreground hover:text-primary" href={`/products/${p.slug}`} key={p.slug}>{p.name}</Link>)}</div>}
+          {["Industries","Quality","About","Contact"].map(x => <Link onClick={() => setOpen(false)} className="block border-b border-border py-3 font-bold text-navy" href={`/${x.toLowerCase()}`} key={x}>{x}</Link>)}
+        </div>}
       </header>
     </>
   );

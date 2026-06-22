@@ -13,13 +13,15 @@ type ProductNavItem = {
 export function ProductDetailNav({ products, currentSlug }: { products: ProductNavItem[]; currentSlug: string }) {
   const currentIndex = products.findIndex((product) => product.slug === currentSlug);
   const current = products[currentIndex];
-  const previous = currentIndex > 0 ? products[currentIndex - 1] : null;
-  const next = currentIndex < products.length - 1 ? products[currentIndex + 1] : null;
+  const currentCategoryProducts = products.filter((product) => product.category === current?.category);
+  const currentCategoryIndex = currentCategoryProducts.findIndex((product) => product.slug === currentSlug);
+  const previous = currentCategoryIndex > 0 ? currentCategoryProducts[currentCategoryIndex - 1] : null;
+  const next = currentCategoryIndex < currentCategoryProducts.length - 1 ? currentCategoryProducts[currentCategoryIndex + 1] : null;
   const groups = products.reduce<Record<string, ProductNavItem[]>>((result, product) => {
     (result[product.category] ??= []).push(product);
     return result;
   }, {});
-  const categoryPriority = ["Gate Valves", "Butterfly Valves", "Check Valves", "Globe Valves", "Ball Valves", "Plug Valves", "Strainers", "Other Valves", "Fittings", "Pipes", "Flanges", "Castings & Forgings"];
+  const categoryPriority = ["Gate Valves", "Check Valves", "Air Valves", "Butterfly Valves", "Globe Valves", "Ball Valves", "Plug Valves", "Strainers", "Other Valves", "Fittings", "Pipes", "Flanges", "Castings & Forgings"];
   const groupEntries = Object.entries(groups).sort(([categoryA], [categoryB]) => {
     if (categoryA === categoryB) return 0;
     if (categoryA === current?.category) return -1;

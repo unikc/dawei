@@ -36,3 +36,17 @@ button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
 .eyebrow { @apply mb-3 text-xs font-bold uppercase tracking-[.25em] text-valve; }
 .section-title { @apply text-3xl font-black leading-tight text-navy md:text-4xl; }
 .grid-lines { background-image: linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size: 36px 36px; }
+
+.sino-product-details { @apply space-y-6 text-sm leading-6 text-muted-foreground; }
+.sino-product-details .zq_right_3 { @apply overflow-hidden border-b border-border pb-6 last:border-b-0 last:pb-0; }
+.sino-product-details .zq_zi { @apply mb-3 mt-2 text-base font-black text-navy; }
+.sino-product-details .table_tu { @apply mb-5 flex justify-center bg-muted p-4; }
+.sino-product-details img { @apply max-h-[520px] max-w-full object-contain; }
+.sino-product-details table { @apply mt-4 w-full min-w-max border-separate border-spacing-0 overflow-hidden border border-border text-xs; }
+.sino-product-details table td { @apply border-b border-r border-border px-3 py-2.5 align-middle text-center leading-5 text-muted-foreground last:border-r-0; }
+.sino-product-details table tr:last-child td { @apply border-b-0; }
+.sino-product-details table tr:nth-child(even) td:not(.zq_zi_2) { @apply bg-muted/70; }
+.sino-product-details table .zq_zi_2 { @apply border-primary/30 bg-primary px-4 py-3 text-left text-sm font-black text-primary-foreground; }
+.sino-product-details table tr + tr .zq_zi_2 { @apply border-border bg-accent px-4 py-2.5 text-center text-xs font-black text-navy; }
+.sino-product-details table p { @apply m-0; }
+.sino-product-details .zq_right_3:has(table) { @apply overflow-x-auto; }

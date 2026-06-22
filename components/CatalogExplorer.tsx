@@ -27,7 +27,14 @@ export function CatalogExplorer({ products }: { products: CatalogProduct[] }) {
     const haystack = normalize(`${p.title} ${p.summary}`);
     return matchesCategory && haystack.includes(normalize(query));
   }).toSorted((a,b) => {
-    const priority = (slug:string) => /valves-(dincast-\d+|gatens-(01|02)|butterfly-(01|02|03))$/.test(slug) ? 0 : 1;
+    const priority = (slug:string) => {
+      const itemNumber = Number(slug.match(/sino-(?:1-1-2|1-4|1-6|1-2)-(\d+)/)?.[1] ?? 0);
+      if (slug.startsWith("sino-1-1-2-")) return itemNumber / 100;
+      if (slug.startsWith("sino-1-4-")) return 1 + itemNumber / 100;
+      if (slug.startsWith("sino-1-6-")) return 2 + itemNumber / 100;
+      if (slug.startsWith("sino-1-2-")) return 3 + itemNumber / 100;
+      return 4;
+    };
     return priority(a.slug)-priority(b.slug) || a.title.localeCompare(b.title);
   }), [products, query, category]);
 
