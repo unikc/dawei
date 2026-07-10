@@ -2,7 +2,7 @@ import catalog from "@/data/legacy-catalog.json";
 import { CatalogExplorer } from "@/components/CatalogExplorer";
 import { sinoPriorityProducts } from "@/data/sino-priority";
 
-export const metadata = { title: "Products" };
+export const metadata = { title: "Products", description: "Ductile iron gate valves, butterfly valves, check valves, air valves, strainers, fittings, pipes, and flanges for international projects." };
 
 export default function Products(){
   const supportingLegacyCatalog=catalog.filter((product)=>!/\b(gate|butterfly|check|air release|air valve)\b/i.test(product.title));

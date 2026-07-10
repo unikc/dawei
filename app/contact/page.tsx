@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { PageHero } from "@/components/PageHero";
 
-export const metadata={title:"Request a Quote"};
+export const metadata={title:"Request a Quote",description:"Request a quotation for ductile iron gate valves, butterfly valves, and complete valve and piping packages from Dalian Dawei International."};
 
 export default function Contact(){
   return <>

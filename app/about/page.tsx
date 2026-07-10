@@ -2,7 +2,7 @@ import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { Card } from "@/components/ui/card";
 
-export const metadata={title:"About Us"};
+export const metadata={title:"About Us",description:"Dalian Dawei International, a valve and piping supplier in Dalian, China since the early 1990s, focused on ductile iron gate valves and butterfly valves for waterworks."};
 
 const certifications=[
   ["certification_1.png","ISO 9001"],

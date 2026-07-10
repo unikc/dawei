@@ -4,7 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Card, CardContent } from "@/components/ui/card";
 
-export const metadata={title:"Quality & Certifications"};
+export const metadata={title:"Quality & Certifications",description:"Quality assurance from requirement review to export coordination, with manufacturing partners holding ISO 9001, API 6D, and CE/PED certifications."};
 
 export default function Quality(){
   const steps=[[SearchCheck,"Requirement Review","Specifications, standards, materials, and documentation are clarified before supply."],[ClipboardCheck,"Inspection & Testing","Appearance, dimensions, corrosion protection, operation, shell, and seat tests are coordinated as required."],[FileCheck2,"Documentation","Available certificates, drawings, inspection documents, and packing details are organized for the order."],[PackageCheck,"Export Coordination","Marking, packing, and shipment preparation are aligned with international delivery needs."]];

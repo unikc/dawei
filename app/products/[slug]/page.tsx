@@ -9,6 +9,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { getSinoPriorityCategoryProducts } from "@/data/sino-priority";
 export function generateStaticParams(){return products.map(p=>({slug:p.slug}))}
 
+export function generateMetadata({params}:{params:{slug:string}}){
+  const p=products.find(x=>x.slug===params.slug);
+  if(!p)return{};
+  return{title:p.name,description:p.description};
+}
+
 export default function ProductPage({params}:{params:{slug:string}}) {
   const p=products.find(x=>x.slug===params.slug);
   if(!p)notFound();
