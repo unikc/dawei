@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, Search, X } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { products } from "@/data/site";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
@@ -10,6 +11,15 @@ import { buttonVariants } from "@/components/ui/button";
 export function Header() {
   const [open, setOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const router = useRouter();
+  const submitSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = query.trim();
+    router.push(q ? `/products?q=${encodeURIComponent(q)}` : "/products");
+    setQuery("");
+    setOpen(false);
+  };
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
@@ -27,11 +37,13 @@ export function Header() {
               </div>
             </div>
             <Link href="/industries">Industries</Link><Link href="/quality">Quality</Link><Link href="/about">About</Link>
+            <form onSubmit={submitSearch} role="search" className="flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1.5 focus-within:border-primary"><Search size={15} className="shrink-0 text-primary"/><input value={query} onChange={(e)=>setQuery(e.target.value)} placeholder="Search products..." aria-label="Search products" className="w-28 bg-transparent text-xs font-medium text-navy outline-none placeholder:text-muted-foreground focus:w-40 transition-all"/></form>
             <Link href="/contact" className={buttonVariants({variant:"signal",size:"sm"})}>Request a Quote</Link>
           </nav>
           <button className="lg:hidden" aria-label="Toggle navigation" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
         </div>
         {open && <div className="border-t border-border bg-background px-5 py-5 lg:hidden">
+          <form onSubmit={submitSearch} role="search" className="mb-2 flex items-center gap-2 rounded-md border border-border bg-muted px-3 py-2"><Search size={16} className="shrink-0 text-primary"/><input value={query} onChange={(e)=>setQuery(e.target.value)} placeholder="Search products..." aria-label="Search products" className="w-full bg-transparent text-sm font-medium text-navy outline-none placeholder:text-muted-foreground"/></form>
           <Link onClick={() => setOpen(false)} className="block border-b border-border py-3 font-bold text-navy" href="/">Home</Link>
           <button className="flex w-full items-center justify-between border-b border-border py-3 text-left font-bold text-navy" onClick={() => setMobileProductsOpen(!mobileProductsOpen)} type="button">Products <ChevronDown size={16} className={mobileProductsOpen ? "rotate-180" : ""}/></button>
           {mobileProductsOpen && <div className="border-b border-border py-2 pl-4">{products.map(p => <Link onClick={() => setOpen(false)} className="block py-2 text-sm font-bold text-muted-foreground hover:text-primary" href={`/products/${p.slug}`} key={p.slug}>{p.name}</Link>)}</div>}

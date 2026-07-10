@@ -1,4 +1,5 @@
 import catalog from "@/data/legacy-catalog.json";
+import { Suspense } from "react";
 import { CatalogExplorer } from "@/components/CatalogExplorer";
 import { sinoPriorityProducts } from "@/data/sino-priority";
 
@@ -25,7 +26,7 @@ export default function Products(){
       </div>
     </section>
     <section className="px-5 py-8">
-      <div className="mx-auto max-w-7xl"><CatalogExplorer products={completeCatalog}/></div>
+      <div className="mx-auto max-w-7xl"><Suspense><CatalogExplorer products={completeCatalog}/></Suspense></div>
     </section>
   </>;
 }

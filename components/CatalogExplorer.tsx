@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Search } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -18,8 +19,11 @@ type CatalogProduct = {
 };
 
 export function CatalogExplorer({ products }: { products: CatalogProduct[] }) {
-  const [query, setQuery] = useState("");
+  const searchParams = useSearchParams();
+  const urlQuery = searchParams.get("q") ?? "";
+  const [query, setQuery] = useState(urlQuery);
   const [category, setCategory] = useState("All");
+  useEffect(() => { setQuery(urlQuery); }, [urlQuery]);
   const categories = ["All", ...Array.from(new Set(products.map((p) => p.category)))];
   const normalize = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   const filtered = useMemo(() => products.filter((p) => {

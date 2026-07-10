@@ -15,7 +15,7 @@ export function generateStaticParams(){return [...sinoPriorityProducts,...catalo
 export function generateMetadata({params}:{params:{slug:string}}){
   const p=getSinoPriorityProduct(params.slug)??catalog.find((x)=>x.slug===params.slug);
   if(!p)return{};
-  const range="range" in p&&p.range?` (${p.range})`:"";
+  const range="range" in p&&p.range?`, ${p.range}`:"";
   const summary=("summary" in p&&p.summary?p.summary:`${p.title} supplied by Dalian Dawei for international waterworks and infrastructure projects.`).replace(/\s+/g," ").trim();
   const description=summary.length>155?summary.slice(0,152).trimEnd()+"...":summary;
   return{title:`${p.title}${range}`,description};
