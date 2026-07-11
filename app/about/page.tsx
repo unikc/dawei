@@ -8,7 +8,7 @@ const certifications=[
   ["certification_1.png","ISO 9001"],
   ["certification_2.png","API 6D"],
   ["certification_3.png","CE / PED"],
-  ["certification_4.png","Fire Safe Test"],
+  ["certification_4.png","Lloyd's Register Inspection"],
 ];
 
 export default function About(){
